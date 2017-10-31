@@ -19,9 +19,6 @@ Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 call vundle#end()
 filetype plugin indent on
 
-" Kill Pandoc keybinds (debug step until I figure out a better way)
-set g:pandoc#keyboard#use_default_mappings 0
-
 " Keybind to switch case searching and default to ignore case
 set ignorecase
 nnoremap <F4> :set ignorecase! ignorecase?<CR>

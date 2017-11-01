@@ -4,6 +4,10 @@ filetype off
 set encoding=utf-8
 set ffs=unix,dos
 
+" Vim Pandoc settings
+let g:pandoc#keyboard#display_motions = 0
+let g:pandoc#formatting#mode = "h"
+
 " Vundle setup
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -23,8 +27,8 @@ filetype plugin indent on
 set ignorecase
 nnoremap <F4> :set ignorecase! ignorecase?<CR>
 
-" Keybind to enable visual line wrapping, defaulting to nowrap
-set nowrap
+" Keybind to enable visual line wrapping, defaulting to wrap
+set wrap
 nnoremap <F5> :set wrap! wrap?<CR>
 
 " Bind hex conversions to F9 and F10
@@ -59,9 +63,13 @@ noremap <C-P> <C-X>
 
 "" Remap movement keys to retain their physical position on the Dvorak layout
 noremap d h
-noremap h j
-noremap t k
+noremap h gj
+vnoremap h gj
+noremap t gk
+vnoremap t gk
 noremap n l
+
+"" Fix mappings when the Pandoc plugin screws it up
 
 "" Use H and T for half-page moves
 noremap H <C-D>
@@ -87,6 +95,12 @@ noremap l t
 noremap J D
 noremap K N
 noremap L T
+vnoremap j d
+vnoremap k n
+vnoremap l t
+vnoremap J D
+vnoremap K N
+vnoremap L T
 
 "" Remap the J function to Ctl + J and add a split line function
 ""  I use 'Kut line' as the mnemonic for splitting a line
@@ -122,6 +136,8 @@ set smartcase
 " Other settings
 "" Automatically refresh files modified outside of Vim
 set autoread
+
+command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
 
 "" Make the text impossible to see when attempting to write a word sprint.
 let g:sprint_mode = 0

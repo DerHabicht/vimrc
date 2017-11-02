@@ -63,10 +63,10 @@ noremap <C-P> <C-X>
 "" Remap movement keys to retain their physical position on the Dvorak layout
 noremap d h
 vnoremap d h
-noremap h j
-vnoremap h j
-noremap t k
-vnoremap t k
+noremap h gj
+vnoremap h gj
+noremap t gk
+vnoremap t gk
 noremap n l
 vnoremap n l
 

@@ -5,7 +5,6 @@ set encoding=utf-8
 set ffs=unix,dos
 
 " Vim Pandoc settings
-let g:pandoc#keyboard#display_motions = 0
 let g:pandoc#formatting#mode = "h"
 
 " Vundle setup
@@ -63,11 +62,13 @@ noremap <C-P> <C-X>
 
 "" Remap movement keys to retain their physical position on the Dvorak layout
 noremap d h
-noremap h gj
-vnoremap h gj
-noremap t gk
-vnoremap t gk
+vnoremap d h
+noremap h j
+vnoremap h j
+noremap t k
+vnoremap t k
 noremap n l
+vnoremap n l
 
 "" Fix mappings when the Pandoc plugin screws it up
 
@@ -90,16 +91,16 @@ inoremap <C-N> <C-T>
 ""   -  'keep looking' for next search
 ""   -  'look' for what t used to do (I didn't know a mnemonic for t)
 noremap j d
-noremap k n
-noremap l t
-noremap J D
-noremap K N
-noremap L T
 vnoremap j d
+noremap k n
 vnoremap k n
+noremap l t
 vnoremap l t
+noremap J D
 vnoremap J D
+noremap K N
 vnoremap K N
+noremap L T
 vnoremap L T
 
 "" Remap the J function to Ctl + J and add a split line function

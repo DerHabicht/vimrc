@@ -123,10 +123,10 @@ set expandtab
 autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
 
 "" Javascript, CSS, and HTML overrides for tabs
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 "" Word wrapping
 set ruler
@@ -182,6 +182,13 @@ function! WordCount()
     call setpos('.', position)
     return s:word_count
 endfunction
+
+function! WriteHTMLShell()
+    " ~/.vim/templates/html
+    r~/.vim/templates/html
+endfunction
+
+command! HTMLShell call WriteHTMLShell()
 
 set statusline=[%f\ -\ %y]\ <%c,%l/%L>\ (wc:%{WordCount()})
 set laststatus=2

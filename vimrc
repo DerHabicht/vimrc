@@ -119,6 +119,9 @@ set nolist
 "set listchars=tab:\|\ |
 set expandtab
 
+"" Include *.m4 as a pandoc file
+autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
+
 "" Javascript, CSS, and HTML overrides for tabs
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2

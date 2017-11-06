@@ -185,10 +185,14 @@ endfunction
 
 function! WriteHTMLShell()
     " ~/.vim/templates/html
-    r~/.vim/templates/html
+    R~/.vim/templates/html
 endfunction
 
 command! HTMLShell call WriteHTMLShell()
+
+"function! RunMakeDoc()
+"
+"endfunction
 
 set statusline=[%f\ -\ %y]\ <%c,%l/%L>\ (wc:%{WordCount()})
 set laststatus=2

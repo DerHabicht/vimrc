@@ -188,7 +188,7 @@ endfunction
 
 function! WriteHTMLShell()
     " ~/.vim/templates/html
-    R~/.vim/templates/html
+    r~/.vim/templates/html
 endfunction
 
 command! HTMLShell call WriteHTMLShell()

@@ -168,6 +168,9 @@ endfunction
 nnoremap <F7> :call g:SprintMode()<CR>
 inoremap <F7> <Esc>:call g:SprintMode()<CR>
 
+nnoremap <Leader>m :!./build<CR>
+nnoremap <Leader>M :!./build clean<CR>
+
 "" Add word count to the status line
 function! WordCount()
     let s:old_status = v:statusmsg
@@ -189,10 +192,6 @@ function! WriteHTMLShell()
 endfunction
 
 command! HTMLShell call WriteHTMLShell()
-
-"function! RunMakeDoc()
-"
-"endfunction
 
 set statusline=[%f\ -\ %y]\ <%c,%l/%L>\ (wc:%{WordCount()})
 set laststatus=2

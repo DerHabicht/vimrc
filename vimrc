@@ -22,6 +22,8 @@ Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 call vundle#end()
 filetype plugin indent on
 
+let mapleader = " "
+
 " Keybind to switch case searching and default to ignore case
 set ignorecase
 nnoremap <F4> :set ignorecase! ignorecase?<CR>
@@ -168,8 +170,11 @@ endfunction
 nnoremap <F7> :call g:SprintMode()<CR>
 inoremap <F7> <Esc>:call g:SprintMode()<CR>
 
-nnoremap <Leader>m :!./build<CR>
-nnoremap <Leader>M :!./build clean<CR>
+nnoremap <Leader>mt :!./build<CR>
+nnoremap <Leader>mw :!./build web<CR>
+nnoremap <Leader>md :!./build doc<CR>
+nnoremap <Leader>mc :!./build clean<CR>
+nnoremap <Leader>mp :!evince %:r.pdf &<CR>
 
 "" Add word count to the status line
 function! WordCount()

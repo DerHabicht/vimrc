@@ -169,6 +169,7 @@ endfunction
 
 nnoremap <F7> :call g:SprintMode()<CR>
 inoremap <F7> <Esc>:call g:SprintMode()<CR>
+nnoremap <F8> :! update_nano<CR>
 
 nnoremap <Leader>mt :!./build<CR>
 nnoremap <Leader>mw :!./build web<CR>

@@ -16,6 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'mtth/scratch.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'rhysd/vim-grammarous'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 
 " Finalize Vundle

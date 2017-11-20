@@ -7,6 +7,9 @@ set ffs=unix,dos
 " Vim Pandoc settings
 let g:pandoc#formatting#mode = "h"
 
+" Grammarous settings
+let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
+
 " Vundle setup
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -177,6 +180,14 @@ nnoremap <Leader>mw :!./build web<CR>
 nnoremap <Leader>md :!./build doc<CR>
 nnoremap <Leader>mc :!./build clean<CR>
 nnoremap <Leader>mp :!evince %:r.pdf &<CR>
+
+nnoremap <Leader>pg :GrammarousCheck<CR>
+nnoremap <Leader>pr :GrammarousReset<CR>
+nmap <Leader>pn <Plug>(grammarous-move-to-next-error)
+nmap <Leader>pp <Plug>(grammarous-move-to-previous-error)
+nmap <Leader>pc <Plug>(grammarous-close-info-window)
+nmap <Leader>pi <Plug>(grammarous-open-info-window)
+nmap <Leader>pw <Plug>(grammarous-move-to-info-window)
 
 "" Add word count to the status line
 function! WordCount()

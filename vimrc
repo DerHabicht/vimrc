@@ -3,6 +3,11 @@ set nocompatible
 filetype off
 set encoding=utf-8
 set ffs=unix,dos
+set cm=blowfish2
+
+" Vim Airline settings
+let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordcount#filetypes',
+      \ '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|pandoc')
 
 " Vim Pandoc settings
 let g:pandoc#formatting#mode = "h"
@@ -43,6 +48,9 @@ nnoremap <Leader>t :NERDTreeToggle<CR>
 
 " More undotree settings
 nnoremap <Leader>u :UndotreeToggle<CR>
+
+" More magit settings
+nnoremap <Leader>g :Magit<CR>
 
 " Turn on wildmenu
 set wildmenu
@@ -104,6 +112,10 @@ noremap <Leader>wd <C-W>h
 noremap <Leader>wh <C-W>j
 noremap <Leader>wt <C-W>k
 noremap <Leader>wn <C-W>l
+noremap <Leader>wc <C-W>c
+noremap <Leader>wo <C-W>o
+noremap <Leader>ws <C-W>s
+noremap <Leader>wv <C-W>v
 
 "" Tweak indent and un-indent commands to align with movement keys
 inoremap <C-N> <C-T>
@@ -200,26 +212,17 @@ nnoremap <Leader>mp :!evince %:r.pdf &<CR>
 
 nnoremap <Leader>pg :GrammarousCheck<CR>
 nnoremap <Leader>pr :GrammarousReset<CR>
+nnoremap <Leader>ps :set spell!<CR>
 nmap <Leader>pn <Plug>(grammarous-move-to-next-error)
 nmap <Leader>pp <Plug>(grammarous-move-to-previous-error)
 nmap <Leader>pc <Plug>(grammarous-close-info-window)
 nmap <Leader>pi <Plug>(grammarous-open-info-window)
 nmap <Leader>pw <Plug>(grammarous-move-to-info-window)
 
-"" Add word count to the status line
-function! WordCount()
-    let s:old_status = v:statusmsg
-    let position = getpos(".")
-    exe ":silent normal g\<c-g>"
-    let stat = v:statusmsg
-    let s:word_count = 0
-    if stat != '--No lines in buffer--'
-        let s:word_count = str2nr(split(v:statusmsg)[11])
-        let v:statusmsg = s:old_status
-    end
-    call setpos('.', position)
-    return s:word_count
-endfunction
+nnoremap <Leader>se :Errors<CR>
+nnoremap <Leader>st :SyntasticToggleMode<CR>
+nnoremap <Leader>sc :SyntasticCheck<CR>
+nnoremap <Leader>sr :SyntasticReset<CR>
 
 function! WriteHTMLShell()
     " ~/.vim/templates/html
@@ -227,9 +230,6 @@ function! WriteHTMLShell()
 endfunction
 
 command! HTMLShell call WriteHTMLShell()
-
-set statusline=[%f\ -\ %y]\ <%c,%l/%L>\ (wc:%{WordCount()})
-set laststatus=2
 
 " Clean up trailing spaces before write
 autocmd BufWritePre * :%s/\s\+$//e

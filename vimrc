@@ -10,6 +10,9 @@ let g:pandoc#formatting#mode = "h"
 " Grammarous settings
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 
+" NERDTree settings
+let NERDTreeMapOpenInTab='\t'
+
 " Vundle setup
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -20,6 +23,13 @@ Plugin 'mtth/scratch.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'rhysd/vim-grammarous'
+Plugin 'vim-airline/vim-airline'
+Plugin 'jreybert/vimagit'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mbbill/undotree'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 
 " Finalize Vundle
@@ -27,6 +37,15 @@ call vundle#end()
 filetype plugin indent on
 
 let mapleader = " "
+
+" More NERDTree settings
+nnoremap <Leader>t :NERDTreeToggle<CR>
+
+" More undotree settings
+nnoremap <Leader>u :UndotreeToggle<CR>
+
+" Turn on wildmenu
+set wildmenu
 
 " Keybind to switch case searching and default to ignore case
 set ignorecase
@@ -76,17 +95,15 @@ vnoremap t gk
 noremap n l
 vnoremap n l
 
-"" Fix mappings when the Pandoc plugin screws it up
-
 "" Use H and T for half-page moves
 noremap H <C-D>
 noremap T <C-U>
 
 "" Remap window movement to the Dvorak keys
-noremap <C-W>d <C-W>h
-noremap <C-W>h <C-W>j
-noremap <C-W>t <C-W>k
-noremap <C-W>n <C-W>l
+noremap <Leader>wd <C-W>h
+noremap <Leader>wh <C-W>j
+noremap <Leader>wt <C-W>k
+noremap <Leader>wn <C-W>l
 
 "" Tweak indent and un-indent commands to align with movement keys
 inoremap <C-N> <C-T>

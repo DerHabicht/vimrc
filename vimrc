@@ -41,7 +41,7 @@ colorscheme slate
 
 "" Plugin pre-load settings
 """ MiniBufExpl
-"let g:miniBufExplorerAutoStart = 0
+let g:miniBufExplVSplit = 30
 let g:miniBufExplBRSplit = 1
 
 """ Vim Airline
@@ -79,6 +79,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'weynhamz/vim-plugin-minibufexpl'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'renyard/vim-git-flow-format'
 
 """ Finalize Vundle
 call vundle#end()
@@ -143,21 +145,29 @@ noremap <Leader>wv <C-W>v
 
 "" Plugin Keybinds
 """ NERDTree
-nnoremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <Leader>t :NERDTreeToggle<CR>:<BS>
 
 """ undotree
-nnoremap <Leader>u :UndotreeToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>:<BS>
 
-""" vimagit
-nnoremap <Leader>g :Magit<CR>
+""" vimagit and fugitive
+nmap <Leader>gb :Gblame<CR>:<BS>
+nmap <Leader>gc :Magit<CR>:<BS>
+nmap <Leader>gd :Gvdiff<CR>:<BS>
+nmap <Leader>gl :Glog<CR>:<BS>
+nmap <Leader>gm :Gmerge<CR>:<BS>
+nmap <Leader>gp :Gpull<CR>:<BS>
+nmap <Leader>gs :Gpush<CR>:<BS>
+nmap <Leader>gt :Gstatus<CR>:<BS>
 
 """ MiniBufExpl
-nmap <Leader>b :MBEFocus<CR>
+nmap <Leader>bo :MBEOpen<CR>:MBEFocus<CR>:<BS>
+nmap <Leader>bq :MBEClose<CR>:<BS>
 
 """ Grammarous
 nnoremap <Leader>pg :GrammarousCheck<CR>
 nnoremap <Leader>pr :GrammarousReset<CR>
-nnoremap <Leader>ps :set spell!<CR>
+nnoremap <Leader>ps :set spell!<CR>:<BS>
 nmap <Leader>pn <Plug>(grammarous-move-to-next-error)
 nmap <Leader>pp <Plug>(grammarous-move-to-previous-error)
 nmap <Leader>pc <Plug>(grammarous-close-info-window)
@@ -172,7 +182,7 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 
 "" Custom commands
 """ Convenience commands
-nnoremap <Leader>vc :let @/=""<CR>
+nnoremap <Leader>vc :let @/=""<CR>:<BS>
 nnoremap <Leader>vh :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>vi :set ignorecase! ignorecase?<CR>
 nnoremap <Leader>vw :set wrap! wrap?<CR>
@@ -184,16 +194,16 @@ nnoremap <C-A> O<Esc>
 command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
 
 """ Hex conversions
-nnoremap <Leader>xc :%!xxd<CR>
-nnoremap <Leader>xr :%!xxd -r<CR>
+nnoremap <Leader>xc :%!xxd<CR>:<BS>
+nnoremap <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
 nnoremap <Leader>mt :!./build<CR>
 nnoremap <Leader>mw :!./build web<CR>
 nnoremap <Leader>md :!./build doc<CR>
 nnoremap <Leader>mc :!./build clean<CR>
-nnoremap <Leader>mp :!evince %:r.pdf &<CR>
-nnoremap <Leader>ms :call g:SprintMode()<CR>
+nnoremap <Leader>mp :!evince %:r.pdf &<CR>:<BS>
+nnoremap <Leader>ms :call g:SprintMode()<CR>:<BS>
 nnoremap <Leader>mn :! update_nano<CR>
 
 " Custom functions (refactor into plugins?)

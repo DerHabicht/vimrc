@@ -1,29 +1,71 @@
-" Disable Vi compatability and force Unix formatting
+" Basic functional settings
 set nocompatible
-filetype off
+
+"" Buffer text formatting
 set encoding=utf-8
 set ffs=unix,dos
-set cm=blowfish2
+set ruler
+set formatoptions=t
+set textwidth=79
+autocmd BufWritePre * :%s/\s\+$//e
 
-" Vim Airline settings
+""" Folding
+set backspace=indent,start
+set foldmethod=indent
+
+""" Tab settings
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set nolist
+set expandtab
+
+""" Search highligting
+set incsearch
+set smartcase
+
+""" Web overrides for tab settings
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+""" Miscellaneous
+set autoread
+set cm=blowfish2
+set ignorecase
+set wildmenu
+set wrap
+colorscheme slate
+
+"" Plugin pre-load settings
+""" MiniBufExpl
+"let g:miniBufExplorerAutoStart = 0
+let g:miniBufExplBRSplit = 1
+
+""" Vim Airline
 let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordcount#filetypes',
       \ '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|pandoc')
 
-" Vim Pandoc settings
+""" Vim Pandoc
 let g:pandoc#formatting#mode = "h"
+autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
 
-" Grammarous settings
+""" Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 
-" NERDTree settings
-let NERDTreeMapOpenInTab='\t'
+""" NERDTree
+let NERDTreeMapOpenInTab = '\t'
 
-" Vundle setup
+"" Load Plugins
+""" Vundle Setup
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-" Vundle Plugins
+""" Plugin List
 Plugin 'mtth/scratch.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
@@ -35,65 +77,22 @@ Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'weynhamz/vim-plugin-minibufexpl'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 
-" Finalize Vundle
+""" Finalize Vundle
 call vundle#end()
 filetype plugin indent on
 
+" Keybind setup
 let mapleader = " "
 
-" More NERDTree settings
-nnoremap <Leader>t :NERDTreeToggle<CR>
-
-" More undotree settings
-nnoremap <Leader>u :UndotreeToggle<CR>
-
-" More magit settings
-nnoremap <Leader>g :Magit<CR>
-
-" Turn on wildmenu
-set wildmenu
-
-" Keybind to switch case searching and default to ignore case
-set ignorecase
-nnoremap <F4> :set ignorecase! ignorecase?<CR>
-
-" Keybind to enable visual line wrapping, defaulting to wrap
-set wrap
-nnoremap <F5> :set wrap! wrap?<CR>
-
-" Bind hex conversions to F9 and F10
-nnoremap <F9> :%!xxd<CR>
-nnoremap <F10> :%!xxd -r<CR>
-
-" Key configuration
-"" Unmap the 's' command, since this is a habit I need to kill
+"" Unmappings
 nnoremap s <NOP>
 vnoremap s <NOP>
 
-"" Prevent backspacing over a new line
-set backspace=indent,start
-
-"" Set folding to indent
-set foldmethod=indent
-
-"" Place a timestamp by pressing F2
-nnoremap <F2> "=strftime("%Y-%m-%d @ %H%M:")<CR>P
-inoremap <F2> <C-R>=strftime("%Y-%m-%d @ %H%M:")<CR>
-
-"" Get a word count on the current contents of the buffer with F3
-nnoremap <F3> :w !wc -w<CR>
-
-"" Map Ctl + O to o and Ctl + A to O without entering Insert mode
-nnoremap <C-O> o<Esc>
-nnoremap <C-A> O<Esc>
-
-"" Map Ctl + Y and Ctl + P to handle numerical increment/decrement
-noremap <C-Y> <C-A>
-noremap <C-P> <C-X>
-
-"" Remap movement keys to retain their physical position on the Dvorak layout
+"" Movement reconfiguration
+""" Primary movement commands
 noremap d h
 vnoremap d h
 noremap h gj
@@ -103,28 +102,12 @@ vnoremap t gk
 noremap n l
 vnoremap n l
 
-"" Use H and T for half-page moves
-noremap H <C-D>
-noremap T <C-U>
-
-"" Remap window movement to the Dvorak keys
-noremap <Leader>wd <C-W>h
-noremap <Leader>wh <C-W>j
-noremap <Leader>wt <C-W>k
-noremap <Leader>wn <C-W>l
-noremap <Leader>wc <C-W>c
-noremap <Leader>wo <C-W>o
-noremap <Leader>ws <C-W>s
-noremap <Leader>wv <C-W>v
-
-"" Tweak indent and un-indent commands to align with movement keys
-inoremap <C-N> <C-T>
-
-"" Remap j, k, and l to the functions previously done by d, n, and t
-""  Since these function keys moved around, I came up with new mnemonics:
-""   -  'jerk' for delete
-""   -  'keep looking' for next search
-""   -  'look' for what t used to do (I didn't know a mnemonic for t)
+""" Remap displaced commands
+" Remap j, k, and l to the functions previously done by d, n, and t
+"  Since these function keys moved around, I came up with new mnemonics:
+"   -  'jerk' for delete
+"   -  'keep looking' for next search
+"   -  'look' for what t used to do (I didn't know a mnemonic for t)
 noremap j d
 vnoremap j d
 noremap k n
@@ -138,47 +121,83 @@ vnoremap K N
 noremap L T
 vnoremap L T
 
-"" Remap the J function to Ctl + J and add a split line function
-""  I use 'Kut line' as the mnemonic for splitting a line
+""" Half-page moves
+noremap H <C-D>
+noremap T <C-U>
+
+""" Line manipulation
+"  I use 'Kut line' as the mnemonic for splitting a line
+inoremap <C-N> <C-T>
 noremap <C-J> J
 noremap <C-K> i<CR><Esc>
 
-" Text formatting
-"" Tab settings
-set autoindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set nolist
-"set list
-"set listchars=tab:\|\ |
-set expandtab
+""" Window movement
+noremap <Leader>wd <C-W>h
+noremap <Leader>wh <C-W>j
+noremap <Leader>wt <C-W>k
+noremap <Leader>wn <C-W>l
+noremap <Leader>wc <C-W>c
+noremap <Leader>wo <C-W>o
+noremap <Leader>ws <C-W>s
+noremap <Leader>wv <C-W>v
 
-"" Include *.m4 as a pandoc file
-autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
+"" Plugin Keybinds
+""" NERDTree
+nnoremap <Leader>t :NERDTreeToggle<CR>
 
-"" Javascript, CSS, and HTML overrides for tabs
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+""" undotree
+nnoremap <Leader>u :UndotreeToggle<CR>
 
-"" Word wrapping
-set ruler
-set formatoptions=t
-set textwidth=79
+""" vimagit
+nnoremap <Leader>g :Magit<CR>
 
-" Search highligting
-set incsearch
-set smartcase
+""" MiniBufExpl
+nmap <Leader>b :MBEFocus<CR>
 
-" Other settings
-"" Automatically refresh files modified outside of Vim
-set autoread
+""" Grammarous
+nnoremap <Leader>pg :GrammarousCheck<CR>
+nnoremap <Leader>pr :GrammarousReset<CR>
+nnoremap <Leader>ps :set spell!<CR>
+nmap <Leader>pn <Plug>(grammarous-move-to-next-error)
+nmap <Leader>pp <Plug>(grammarous-move-to-previous-error)
+nmap <Leader>pc <Plug>(grammarous-close-info-window)
+nmap <Leader>pi <Plug>(grammarous-open-info-window)
+nmap <Leader>pw <Plug>(grammarous-move-to-info-window)
 
+""" Syntastic
+nnoremap <Leader>se :Errors<CR>
+nnoremap <Leader>st :SyntasticToggleMode<CR>
+nnoremap <Leader>sc :SyntasticCheck<CR>
+nnoremap <Leader>sr :SyntasticReset<CR>
+
+"" Custom commands
+""" Convenience commands
+nnoremap <Leader>vc :let @/=""<CR>
+nnoremap <Leader>vh :set hlsearch! hlsearch?<CR>
+nnoremap <Leader>vi :set ignorecase! ignorecase?<CR>
+nnoremap <Leader>vw :set wrap! wrap?<CR>
+nnoremap <Leader>vt "=strftime("%Y-%m-%d @ %H%M:")<CR>P
+noremap <Leader>v= <C-A>
+noremap <Leader>v- <C-X>
+nnoremap <C-O> o<Esc>
+nnoremap <C-A> O<Esc>
 command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
 
-"" Make the text impossible to see when attempting to write a word sprint.
+""" Hex conversions
+nnoremap <Leader>xc :%!xxd<CR>
+nnoremap <Leader>xr :%!xxd -r<CR>
+
+""" Commands for writing (incl. MakeDoc build)
+nnoremap <Leader>mt :!./build<CR>
+nnoremap <Leader>mw :!./build web<CR>
+nnoremap <Leader>md :!./build doc<CR>
+nnoremap <Leader>mc :!./build clean<CR>
+nnoremap <Leader>mp :!evince %:r.pdf &<CR>
+nnoremap <Leader>ms :call g:SprintMode()<CR>
+nnoremap <Leader>mn :! update_nano<CR>
+
+" Custom functions (refactor into plugins?)
+"" Word Sprint mode to black out text
 let g:sprint_mode = 0
 
 function! g:SprintMode()
@@ -200,30 +219,7 @@ function! g:SprintMode()
     end
 endfunction
 
-nnoremap <F7> :call g:SprintMode()<CR>
-inoremap <F7> <Esc>:call g:SprintMode()<CR>
-nnoremap <F8> :! update_nano<CR>
-
-nnoremap <Leader>mt :!./build<CR>
-nnoremap <Leader>mw :!./build web<CR>
-nnoremap <Leader>md :!./build doc<CR>
-nnoremap <Leader>mc :!./build clean<CR>
-nnoremap <Leader>mp :!evince %:r.pdf &<CR>
-
-nnoremap <Leader>pg :GrammarousCheck<CR>
-nnoremap <Leader>pr :GrammarousReset<CR>
-nnoremap <Leader>ps :set spell!<CR>
-nmap <Leader>pn <Plug>(grammarous-move-to-next-error)
-nmap <Leader>pp <Plug>(grammarous-move-to-previous-error)
-nmap <Leader>pc <Plug>(grammarous-close-info-window)
-nmap <Leader>pi <Plug>(grammarous-open-info-window)
-nmap <Leader>pw <Plug>(grammarous-move-to-info-window)
-
-nnoremap <Leader>se :Errors<CR>
-nnoremap <Leader>st :SyntasticToggleMode<CR>
-nnoremap <Leader>sc :SyntasticCheck<CR>
-nnoremap <Leader>sr :SyntasticReset<CR>
-
+"" Insert a basic HTML document into current buffer
 function! WriteHTMLShell()
     " ~/.vim/templates/html
     r~/.vim/templates/html
@@ -231,12 +227,5 @@ endfunction
 
 command! HTMLShell call WriteHTMLShell()
 
-" Clean up trailing spaces before write
-autocmd BufWritePre * :%s/\s\+$//e
-
 " Change the Vim working directory to the user's home directory.
 cd ~
-
-" Set color scheme
-":highlight Normal ctermbg=slate
-colorscheme slate

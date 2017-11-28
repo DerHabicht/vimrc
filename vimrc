@@ -142,6 +142,10 @@ noremap <Leader>wc <C-W>c
 noremap <Leader>wo <C-W>o
 noremap <Leader>ws <C-W>s
 noremap <Leader>wv <C-W>v
+noremap <Leader>w= <C-W>+
+noremap <Leader>w- <C-W>-
+noremap <Leader>w. <C-W>>
+noremap <Leader>w, <C-w><
 
 "" Plugin Keybinds
 """ NERDTree

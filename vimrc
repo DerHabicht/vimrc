@@ -36,6 +36,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 set autoread
 set cm=blowfish2
 set ignorecase
+set viminfo=
 set wildmenu
 set wrap
 colorscheme slate
@@ -197,6 +198,8 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 
 "" Custom commands
 """ Convenience commands
+map <Leader>e :call g:BlackOut()<CR>
+imap <C-E> :call g:BlackOut()<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
@@ -224,7 +227,6 @@ map <Leader>mn :! update_nano<CR>
 " Custom functions (refactor into plugins?)
 "" Word Sprint mode to black out text
 let g:sprint_mode = 0
-
 function! g:SprintMode()
     if g:sprint_mode == 0
         highlight Normal guifg=Black guibg=Black ctermfg=Black ctermbg=Black
@@ -241,6 +243,22 @@ function! g:SprintMode()
         colorscheme slate
         setlocal spell spelllang=en_us
         let g:sprint_mode = 0
+    end
+endfunction
+
+function! g:BlackOut()
+    if !exists('b:blackout')
+        let b:blackout = 1
+        let b:syntax = &syntax
+        set syntax=
+        highlight Normal guifg=Black guibg=Black ctermfg=Black ctermbg=Black
+        highlight Cursor guifg=Black guibg=Black ctermfg=Black ctermbg=Black
+        setlocal nospell
+    else
+        colorscheme slate
+        setlocal spell spelllang=en_us
+        execute 'let &syntax = b:syntax'
+        unlet b:blackout
     end
 endfunction
 

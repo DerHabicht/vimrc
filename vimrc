@@ -199,7 +199,7 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 "" Custom commands
 """ Convenience commands
 map <Leader>e :call g:BlackOut()<CR>
-imap <C-E> :call g:BlackOut()<CR>
+imap <C-e> <Esc>:call g:BlackOut()<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>

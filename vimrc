@@ -210,6 +210,9 @@ map <Leader>v- <C-X>
 map <C-O> o<Esc>
 map <C-A> O<Esc>
 command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
+command -nargs=1 Task read !task <args> uuids
+
+
 
 """ Hex conversions
 map <Leader>xc :%!xxd<CR>:<BS>

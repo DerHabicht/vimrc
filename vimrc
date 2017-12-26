@@ -219,6 +219,7 @@ map <Leader>xc :%!xxd<CR>:<BS>
 map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
+map <Leader>ml :!pdflatex %<CR>
 map <Leader>mt :!./build<CR>
 map <Leader>mw :!./build web<CR>
 map <Leader>md :!./build doc<CR>

@@ -84,6 +84,7 @@ Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
 Plugin 'fatih/vim-go'
+Plugin 'leafgarland/typescript-vim'
 
 """ Finalize Vundle
 call vundle#end()

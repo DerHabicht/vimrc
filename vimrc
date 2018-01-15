@@ -215,10 +215,11 @@ command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
 command -nargs=1 Task read !task <args> uuids
 nnoremap <Leader>i <C-a>
 nnoremap <Leader>d <C-x>
+map <Leader>x :!%:p<CR>
 
 """ Hex conversions
-map <Leader>xc :%!xxd<CR>:<BS>
-map <Leader>xr :%!xxd -r<CR>:<BS>
+map <Leader>hc :%!xxd<CR>:<BS>
+map <Leader>hr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
 map <Leader>ml :!pdflatex %<CR>

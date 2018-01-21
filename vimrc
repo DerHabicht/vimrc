@@ -61,6 +61,10 @@ let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 """ NERDTree
 let NERDTreeMapOpenInTab = '\t'
 
+""" Taskwarrior
+let g:task_report_command = ['today']
+let g:task_report_name = 'today'
+
 "" Load Plugins
 """ Vundle Setup
 filetype off
@@ -86,10 +90,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
 Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'blindFS/vim-taskwarrior'
 
 """ Finalize Vundle
 call vundle#end()
 filetype plugin indent on
+
+"" Plugin post-load settings
 
 " Keybind setup
 let mapleader = " "
@@ -197,6 +204,9 @@ nnoremap <Leader>se :Errors<CR>
 nnoremap <Leader>st :SyntasticToggleMode<CR>
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
+
+""" Taskwarrior
+map <Leader>a :TW<CR>
 
 "" Custom commands
 """ Convenience commands

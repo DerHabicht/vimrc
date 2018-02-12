@@ -42,11 +42,6 @@ set wrap
 colorscheme slate
 
 "" Plugin pre-load settings
-""" MiniBufExpl
-let g:miniBufExplVSplit = 30
-let g:miniBufExplBRSplit = 1
-let g:miniBufExplBuffersNeeded = 0
-
 """ Vim Airline
 let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordcount#filetypes',
       \ '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|pandoc')
@@ -84,13 +79,13 @@ Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'weynhamz/vim-plugin-minibufexpl'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
 Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'blindFS/vim-taskwarrior'
+Plugin 'DerHabicht/bufexplorer'
 
 """ Finalize Vundle
 call vundle#end()
@@ -185,10 +180,6 @@ map <Leader>ot :GoTest<CR>
 map <Leader>od :GoDef<CR>
 map <Leader>oc :GoCoverage<CR>
 
-""" MiniBufExpl
-map <Leader>bo :MBEOpen<CR>:MBEFocus<CR>:<BS>
-map <Leader>bq :MBEClose<CR>:<BS>
-
 """ Grammarous
 map <Leader>pg :GrammarousCheck<CR>
 map <Leader>pr :GrammarousReset<CR>
@@ -212,6 +203,7 @@ map <Leader>a :TW<CR>
 """ Convenience commands
 map <Leader>e :call g:BlackOut()<CR>
 imap <C-e> <Esc>:call g:BlackOut()<CR>
+map <Leader>vb :!bash<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>

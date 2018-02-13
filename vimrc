@@ -85,8 +85,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
 Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'blindFS/vim-taskwarrior'
 Plugin 'DerHabicht/bufexplorer'
+if !has("win32")
+    Plugin 'blindFS/vim-taskwarrior'
+endif
 
 """ Finalize Vundle
 call vundle#end()

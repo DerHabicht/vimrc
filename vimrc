@@ -6,7 +6,7 @@ set encoding=utf-8
 set ffs=unix,dos
 set ruler
 set formatoptions=t
-set textwidth=79
+set textwidth=119
 autocmd BufWritePre * :%s/\s\+$//e
 
 """ Folding
@@ -55,6 +55,7 @@ let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 
 """ NERDTree
 let NERDTreeMapOpenInTab = '\t'
+let NERDTreeMapOpenInTabSilent = '\T'
 
 """ Taskwarrior
 let g:task_report_command = ['today']

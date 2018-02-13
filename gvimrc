@@ -1,7 +1,7 @@
 " Visual settings
 set guifont=Monospace\ 12
 highlight ColorColumn guibg=DimGray
-set colorcolumn=80
+set colorcolumn=120
 set lines=30 columns=100
 set number
 

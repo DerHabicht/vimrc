@@ -86,6 +86,7 @@ Plugin 'renyard/vim-git-flow-format'
 Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'DerHabicht/bufexplorer'
+Plugin 'myusuf3/numbers.vim'
 if !has("win32")
     Plugin 'blindFS/vim-taskwarrior'
 endif
@@ -169,7 +170,6 @@ map <Leader>gb :Gblame<CR>:<BS>
 map <Leader>gc :Magit<CR>:<BS>
 map <Leader>gd :Gvdiff<CR>:<BS>
 map <Leader>gl :Glog<CR>:<BS>
-map <Leader>gm :Gmerge<CR>:<BS>
 map <Leader>gp :Gpull<CR>:<BS>
 map <Leader>gs :Gpush<CR>:<BS>
 map <Leader>gt :Gstatus<CR>:<BS>

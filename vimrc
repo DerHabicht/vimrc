@@ -212,6 +212,7 @@ map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vw :set wrap! wrap?<CR>
+map <Leader>vs :Scratch<CR>
 map <Leader>vt "=strftime("%Y-%m-%d @ %H%M:")<CR>P
 map <Leader>v= <C-A>
 map <Leader>v- <C-X>

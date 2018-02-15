@@ -87,6 +87,7 @@ Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'DerHabicht/bufexplorer'
 Plugin 'myusuf3/numbers.vim'
+Plugin 'prettier/vim-prettier'
 if !has("win32")
     Plugin 'blindFS/vim-taskwarrior'
 endif

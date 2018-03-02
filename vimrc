@@ -201,7 +201,7 @@ nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
 """ Taskwarrior
-map <Leader>a :TW<CR>
+map <Leader>l :TW<CR>
 
 "" Custom commands
 """ Convenience commands

@@ -49,6 +49,7 @@ let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordc
 """ Vim Pandoc
 let g:pandoc#formatting#mode = "h"
 autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
+autocmd BufNewFile,BufRead *.md set filetype=pandoc
 
 """ Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
@@ -88,6 +89,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'DerHabicht/bufexplorer'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'prettier/vim-prettier'
+Plugin 'dhruvasagar/vim-table-mode'
 if !has("win32")
     Plugin 'blindFS/vim-taskwarrior'
 endif
@@ -161,7 +163,7 @@ map <Leader>w, <C-w><
 
 "" Plugin Keybinds
 """ NERDTree
-map <Leader>t :NERDTreeToggle<CR>:<BS>
+map <Leader>d :NERDTreeToggle<CR>:<BS>
 
 """ undotree
 map <Leader>u :UndotreeToggle<CR>:<BS>
@@ -220,8 +222,8 @@ map <C-O> o<Esc>
 map <C-A> O<Esc>
 command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
 command -nargs=1 Task read !task <args> uuids
-nnoremap <Leader>i <C-a>
-nnoremap <Leader>d <C-x>
+nnoremap <Leader>n= <C-a>
+nnoremap <Leader>n- <C-x>
 map <Leader>x :!%:p<CR>
 
 """ Hex conversions

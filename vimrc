@@ -90,6 +90,7 @@ Plugin 'DerHabicht/bufexplorer'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'posva/vim-vue'
 if !has("win32")
     Plugin 'blindFS/vim-taskwarrior'
 endif

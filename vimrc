@@ -6,7 +6,7 @@ set encoding=utf-8
 set ffs=unix,dos
 set ruler
 set formatoptions=t
-set textwidth=119
+set textwidth=79
 autocmd BufWritePre * :%s/\s\+$//e
 
 """ Folding
@@ -30,6 +30,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """ Miscellaneous
@@ -232,14 +233,16 @@ map <Leader>hc :%!xxd<CR>:<BS>
 map <Leader>hr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
-map <Leader>ml :!lualatex %<CR>
-map <Leader>mt :!./build<CR>
-map <Leader>mw :!./build web<CR>
-map <Leader>md :!./build doc<CR>
-map <Leader>mc :!./build clean<CR>
-map <Leader>mp :!evince %:r.pdf &<CR>:<BS>
-map <Leader>ms :call g:SprintMode()<CR>:<BS>
-map <Leader>mn :! update_nano<CR>
+map <Leader>mbl :!lualatex %<CR>
+map <Leader>mbd :!pandoc -i % -o %:r.docx<CR>
+map <Leader>mt  :!./build<CR>
+map <Leader>mw  :!./build web<CR>
+map <Leader>md  :!./build doc<CR>
+map <Leader>mc  :!./build clean<CR>
+map <Leader>msp :!evince %:r.pdf &<CR>:<BS>
+map <Leader>msd :!libreoffice %:r.docx &<CR>:<BS>
+map <Leader>mp  :call g:SprintMode()<CR>:<BS>
+map <Leader>mn  :! update_nano<CR>
 
 " Custom functions (refactor into plugins?)
 "" Word Sprint mode to black out text

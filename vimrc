@@ -101,6 +101,8 @@ call vundle#end()
 filetype plugin indent on
 
 "" Plugin post-load settings
+""" Vim Table Mode
+let g:table_mode_corner='|'
 
 " Keybind setup
 let mapleader = " "
@@ -226,11 +228,14 @@ command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
 command -nargs=1 Task read !task <args> uuids
 nnoremap <Leader>n= <C-a>
 nnoremap <Leader>n- <C-x>
-map <Leader>x :!%:p<CR>
+
+""" Shells
+map <Leader>hh :HTMLShell<CR>
+map <Leader>hv :VueShell<CR>
 
 """ Hex conversions
-map <Leader>hc :%!xxd<CR>:<BS>
-map <Leader>hr :%!xxd -r<CR>:<BS>
+map <Leader>xc :%!xxd<CR>:<BS>
+map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
 map <Leader>mbl :!lualatex %<CR>
@@ -285,10 +290,18 @@ endfunction
 "" Insert a basic HTML document into current buffer
 function! WriteHTMLShell()
     " ~/.vim/templates/html
-    r~/.vim/templates/html
+    .-1r~/.vim/templates/html
 endfunction
-
 command! HTMLShell call WriteHTMLShell()
+
+"" Insert a basic Vue component into the current buffer
+function! WriteVueShell()
+    " ~/.vim/templates/vue
+    .-1r~/.vim/templates/vue
+    %s/${COMPONENT}/\=tolower(expand('%:t:r'))/g
+endfunction
+command! VueShell call WriteVueShell()
+
 
 " Change the Vim working directory to the user's home directory.
 cd ~

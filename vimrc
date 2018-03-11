@@ -25,13 +25,18 @@ set expandtab
 set incsearch
 set smartcase
 
-""" Web overrides for tab settings
+""" Filetype specific overrides of tab settings
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+""" Enable spelling by filetype
+autocmd FileType pandoc set spell
+autocmd FileType tex set spell
+autocmd FileType text set spell
 
 """ Miscellaneous
 set autoread
@@ -248,6 +253,8 @@ map <Leader>msp :!evince %:r.pdf &<CR>:<BS>
 map <Leader>msd :!libreoffice %:r.docx &<CR>:<BS>
 map <Leader>mp  :call g:SprintMode()<CR>:<BS>
 map <Leader>mn  :! update_nano<CR>
+map <Leader>mmm :make<CR>
+map <Leader>mmc :make clean<CR>
 
 " Custom functions (refactor into plugins?)
 "" Word Sprint mode to black out text

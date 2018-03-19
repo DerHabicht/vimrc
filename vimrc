@@ -64,6 +64,9 @@ let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 let NERDTreeMapOpenInTab = '\t'
 let NERDTreeMapOpenInTabSilent = '\T'
 
+""" Syntastic
+let g:syntastic_python_checkers = ['pylint']
+
 """ Taskwarrior
 let g:task_report_command = ['today']
 let g:task_report_name = 'today'

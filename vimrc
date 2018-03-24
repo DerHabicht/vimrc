@@ -239,6 +239,7 @@ nnoremap <Leader>n- <C-x>
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>
+map <Leader>hj :JekyllShell<CR>
 map <Leader>hv :VueShell<CR>
 
 """ Hex conversions
@@ -311,6 +312,13 @@ function! WriteVueShell()
     %s/${COMPONENT}/\=tolower(expand('%:t:r'))/g
 endfunction
 command! VueShell call WriteVueShell()
+
+"" Insert a shell for a Jekyll Blog post
+function! WriteJekyllShell()
+    " ~/.vim/templates/vue
+    .-1r~/.vim/templates/jekyll
+endfunction
+command! JekyllShell call WriteJekyllShell()
 
 
 " Change the Vim working directory to the user's home directory.

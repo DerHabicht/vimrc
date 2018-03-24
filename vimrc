@@ -32,6 +32,8 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType lilypond setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType lilypond setlocal textwidth=119 colorcolumn=120
 
 """ Enable spelling by filetype
 autocmd FileType pandoc set spell
@@ -248,6 +250,7 @@ map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
 map <Leader>mbl :!lualatex %<CR>
+map <Leader>mbm :!lilypond %<CR>
 map <Leader>mbd :!pandoc -i % -o %:r.docx<CR>
 map <Leader>mt  :!./build<CR>
 map <Leader>mw  :!./build web<CR>

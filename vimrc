@@ -38,7 +38,11 @@ autocmd FileType lilypond setlocal textwidth=119 colorcolumn=120
 """ Enable spelling by filetype
 autocmd FileType pandoc set spell
 autocmd FileType tex set spell
+autocmd FileType plaintex set spell
 autocmd FileType text set spell
+
+""" Override tex filetype
+autocmd BufNewFile,BufRead *.cls set filetype=tex
 
 """ Miscellaneous
 set autoread

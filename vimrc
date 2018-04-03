@@ -250,6 +250,7 @@ map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
 map <Leader>mbl :!lualatex %<CR>
+map <Leader>mbg :!dot % -Tsvg > %:r.svg<CR>
 map <Leader>mbm :!lilypond %<CR>
 map <Leader>mbd :!pandoc -i % -o %:r.docx<CR>
 map <Leader>mt  :!./build<CR>
@@ -258,6 +259,7 @@ map <Leader>md  :!./build doc<CR>
 map <Leader>mc  :!./build clean<CR>
 map <Leader>msp :!evince %:r.pdf &<CR>:<BS>
 map <Leader>msd :!libreoffice %:r.docx &<CR>:<BS>
+map <Leader>msg :!eog %:r.svg &<CR>:<BS>
 map <Leader>mp  :call g:SprintMode()<CR>:<BS>
 map <Leader>mn  :! update_nano<CR>
 map <Leader>mmm :make<CR>

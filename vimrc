@@ -7,7 +7,7 @@ set ffs=unix,dos
 set ruler
 set formatoptions=t
 set textwidth=79
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e | let @/=""
 
 """ Folding
 set backspace=indent,start

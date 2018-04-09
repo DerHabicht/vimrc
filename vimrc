@@ -7,7 +7,7 @@ set ffs=unix,dos
 set ruler
 set formatoptions=t
 set textwidth=79
-autocmd BufWritePre * :%s/\s\+$//e | let @/=""
+autocmd BufWritePre let temp=@/ | * :%s/\s\+$//e | let @/=temp
 
 """ Folding
 set backspace=indent,start
@@ -66,12 +66,17 @@ autocmd BufNewFile,BufRead *.md set filetype=pandoc
 """ Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 
+
 """ NERDTree
 let NERDTreeMapOpenInTab = '\t'
 let NERDTreeMapOpenInTabSilent = '\T'
 
+""" Python Mode
+let g:pymode_python = 'python3'
+
 """ Syntastic
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_javascript_checkers = ['eslint']
 
 """ Taskwarrior
 let g:task_report_command = ['today']
@@ -106,6 +111,9 @@ Plugin 'myusuf3/numbers.vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'posva/vim-vue'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'python-mode/python-mode'
 if !has("win32")
     Plugin 'blindFS/vim-taskwarrior'
 endif
@@ -115,12 +123,12 @@ call vundle#end()
 filetype plugin indent on
 
 "" Plugin post-load settings
+let mapleader = " "
+
 """ Vim Table Mode
 let g:table_mode_corner='|'
 
 " Keybind setup
-let mapleader = " "
-
 "" Unmappings
 nnoremap s <NOP>
 vnoremap s <NOP>
@@ -229,6 +237,8 @@ map <Leader>e :call g:BlackOut()<CR>
 imap <C-e> <Esc>:call g:BlackOut()<CR>
 map <Leader>vb :!bash<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
+map <Leader>vea :VirtualEnvActivate ENV<CR>
+map <Leader>ved :VirtualEnvDeactivate<CR>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vw :set wrap! wrap?<CR>
@@ -253,14 +263,16 @@ map <Leader>xc :%!xxd<CR>:<BS>
 map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
-map <Leader>mbl :!lualatex %<CR>
+map <Leader>mbl :!pdflatex %<CR>
+map <Leader>mbm :!pandoc -i % -o %:r.html<CR>
 map <Leader>mbg :!dot % -Tsvg > %:r.svg<CR>
-map <Leader>mbm :!lilypond %<CR>
+map <Leader>mby :!lilypond %<CR>
 map <Leader>mbd :!pandoc -i % -o %:r.docx<CR>
 map <Leader>mt  :!./build<CR>
 map <Leader>mw  :!./build web<CR>
 map <Leader>md  :!./build doc<CR>
 map <Leader>mc  :!./build clean<CR>
+map <Leader>msh :!firefox %:r.html<CR>
 map <Leader>msp :!evince %:r.pdf &<CR>:<BS>
 map <Leader>msd :!libreoffice %:r.docx &<CR>:<BS>
 map <Leader>msg :!eog %:r.svg &<CR>:<BS>

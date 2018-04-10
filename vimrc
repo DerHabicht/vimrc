@@ -1,5 +1,7 @@
 " Basic functional settings
 set nocompatible
+if has('python3')
+endif
 
 "" Buffer text formatting
 set encoding=utf-8
@@ -263,7 +265,7 @@ map <Leader>xc :%!xxd<CR>:<BS>
 map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
-map <Leader>mbl :!pdflatex %<CR>
+map <Leader>mbl :!lualatex %<CR>
 map <Leader>mbm :!pandoc -i % -o %:r.html<CR>
 map <Leader>mbg :!dot % -Tsvg > %:r.svg<CR>
 map <Leader>mby :!lilypond %<CR>

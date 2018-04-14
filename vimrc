@@ -75,6 +75,7 @@ let NERDTreeMapOpenInTabSilent = '\T'
 
 """ Python Mode
 let g:pymode_python = 'python3'
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 
 """ Syntastic
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
@@ -129,6 +130,9 @@ let mapleader = " "
 
 """ Vim Table Mode
 let g:table_mode_corner='|'
+
+""" Other
+set wildignore+=**/node_modules/**
 
 " Keybind setup
 "" Unmappings
@@ -243,9 +247,11 @@ map <Leader>vea :VirtualEnvActivate ENV<CR>
 map <Leader>ved :VirtualEnvDeactivate<CR>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
+map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>
 map <Leader>vw :set wrap! wrap?<CR>
 map <Leader>vs :Scratch<CR>
 map <Leader>vt "=strftime("%Y-%m-%d @ %H%M:")<CR>P
+map <Leader>vq :copen<CR>
 map <Leader>v= <C-A>
 map <Leader>v- <C-X>
 map <C-O> o<Esc>

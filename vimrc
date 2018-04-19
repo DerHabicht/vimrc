@@ -48,7 +48,6 @@ autocmd BufNewFile,BufRead *.cls set filetype=tex
 
 """ Miscellaneous
 set autoread
-set cm=blowfish2
 set ignorecase
 set viminfo=
 set wildmenu

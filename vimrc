@@ -79,6 +79,15 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 """ Syntastic
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_vue_checkers = ['eslint']
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+    let g:syntastic_vue_eslint_exec = local_eslint
+endif
 
 """ Taskwarrior
 let g:task_report_command = ['today']
@@ -103,6 +112,7 @@ Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'sekel/vim-vue-syntastic'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'

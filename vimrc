@@ -118,9 +118,7 @@ Plugin 'posva/vim-vue'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'python-mode/python-mode'
-if !has("win32")
-    Plugin 'blindFS/vim-taskwarrior'
-endif
+Plugin 'esalter-va/vim-checklist'
 
 """ Finalize Vundle
 call vundle#end()
@@ -210,6 +208,14 @@ map <Leader>gp :Gpull<CR>:<BS>
 map <Leader>gs :Gpush<CR>:<BS>
 map <Leader>gt :Gstatus<CR>:<BS>
 
+""" Vim Checklist
+nnoremap <leader>ll :ChecklistToggleCheckbox<cr>
+nnoremap <leader>le :ChecklistEnableCheckbox<cr>
+nnoremap <leader>ld :ChecklistDisableCheckbox<cr>
+vnoremap <leader>ll :ChecklistToggleCheckbox<cr>
+vnoremap <leader>le :ChecklistEnableCheckbox<cr>
+vnoremap <leader>ld :ChecklistDisableCheckbox<cr>
+
 """ vim-go
 map <Leader>ob :GoBuild<CR>
 map <Leader>oi :GoInstall<CR>
@@ -234,9 +240,6 @@ nnoremap <Leader>se :Errors<CR>
 nnoremap <Leader>st :SyntasticToggleMode<CR>
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
-
-""" Taskwarrior
-map <Leader>l :TW<CR>
 
 "" Custom commands
 """ Convenience commands

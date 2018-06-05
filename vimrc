@@ -85,6 +85,9 @@ let g:syntastic_vue_checkers = ['eslint']
 let g:task_report_command = ['today']
 let g:task_report_name = 'today'
 
+""" Vim Go
+let g:go_list_type = "quickfix"
+
 "" Load Plugins
 """ Vundle Setup
 filetype off

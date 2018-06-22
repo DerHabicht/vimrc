@@ -212,12 +212,13 @@ map <Leader>gs :Gpush<CR>:<BS>
 map <Leader>gt :Gstatus<CR>:<BS>
 
 """ Vim Checklist
-nnoremap <leader>ll :ChecklistToggleCheckbox<cr>
-nnoremap <leader>le :ChecklistEnableCheckbox<cr>
-nnoremap <leader>ld :ChecklistDisableCheckbox<cr>
-vnoremap <leader>ll :ChecklistToggleCheckbox<cr>
-vnoremap <leader>le :ChecklistEnableCheckbox<cr>
-vnoremap <leader>ld :ChecklistDisableCheckbox<cr>
+nnoremap <Leader>ll :ChecklistToggleCheckbox<CR>
+nnoremap <Leader>le :ChecklistEnableCheckbox<CR>
+nnoremap <Leader>ld :ChecklistDisableCheckbox<CR>
+nnoremap <Leader>ln o- [ ]<Esc><CR>
+vnoremap <Leader>ll :ChecklistToggleCheckbox<CR>
+vnoremap <Leader>le :ChecklistEnableCheckbox<CR>
+vnoremap <Leader>ld :ChecklistDisableCheckbox<CR>
 
 """ vim-go
 map <Leader>ob :GoBuild<CR>

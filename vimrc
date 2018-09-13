@@ -122,6 +122,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'python-mode/python-mode'
 Plugin 'esalter-va/vim-checklist'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
+Plugin 'sebdah/vim-delve'
 
 """ Finalize Vundle
 call vundle#end()
@@ -228,6 +230,12 @@ map <Leader>or :GoRun<CR>
 map <Leader>ot :GoTest<CR>
 map <Leader>od :GoDef<CR>
 map <Leader>oc :GoCoverage<CR>
+
+""" vim-delve
+map <Leader>ovb :DlvToggleBreakpoint<CR>
+map <Leader>ovt :DlvToggleTracepoint<CR>
+map <Leader>ovc :DlvClearAll<CR>
+map <Leader>ovd :DlvDebug<CR>
 
 """ Grammarous
 map <Leader>pg :GrammarousCheck<CR>

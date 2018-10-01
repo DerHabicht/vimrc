@@ -1,0 +1,12 @@
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.ext.declarative import declarative_base
+
+
+Base = declarative_base()
+
+
+class ${ENTITY}(Base):
+    __tablename__ = '${ENTITYPL}'
+
+    id = Column(UUID, primary_key=True)

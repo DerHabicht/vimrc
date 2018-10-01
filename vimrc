@@ -48,7 +48,6 @@ autocmd BufNewFile,BufRead *.cls set filetype=tex
 
 """ Miscellaneous
 set autoread
-set ignorecase
 set viminfo=
 set wildmenu
 set wrap
@@ -282,6 +281,7 @@ nnoremap <Leader>n- <C-x>
 map <Leader>hh :HTMLShell<CR>
 map <Leader>hj :JekyllShell<CR>
 map <Leader>hv :VueShell<CR>
+map <Leader>hs :SQLAlchemyShell<CR>
 
 """ Hex conversions
 map <Leader>xc :%!xxd<CR>:<BS>
@@ -353,18 +353,32 @@ command! HTMLShell call WriteHTMLShell()
 
 "" Insert a basic Vue component into the current buffer
 function! WriteVueShell()
-    " ~/.vim/templates/vue
-    .-1r~/.vim/templates/vue
+    -1r~/.vim/templates/vue
     %s/${COMPONENT}/\=tolower(expand('%:t:r'))/g
 endfunction
 command! VueShell call WriteVueShell()
 
 "" Insert a shell for a Jekyll Blog post
 function! WriteJekyllShell()
-    " ~/.vim/templates/vue
-    .-1r~/.vim/templates/jekyll
+    -1r~/.vim/templates/jekyll
 endfunction
 command! JekyllShell call WriteJekyllShell()
+
+"" Insert a shell for a SQLAlchemy ORM model
+function! WriteSQLAlchemy()
+    set noignorecase
+    -1r~/.vim/templates/sqlalchemy
+    %s/${ENTITY}/\=tolower(expand('%:t:r'))/g
+    let @/=tolower(expand('%:t:r'))
+    %s//\u&/
+    %s/${ENTITYPL}/\=tolower(expand('%:t:r'))/g
+    let @/=tolower(expand('%:t:r'))
+    %s//&s/
+    let @/=''
+    set smartcase
+endfunction
+command! SQLAlchemyShell call WriteSQLAlchemy()
+
 
 
 " Change the Vim working directory to the user's home directory.

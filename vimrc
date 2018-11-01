@@ -35,7 +35,10 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType lilypond setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+""" Filetype specific overrides of column width
 autocmd FileType lilypond setlocal textwidth=119 colorcolumn=120
+autocmd FileType tex setlocal textwidth=119 colorcolumn=120
 
 """ Enable spelling by filetype
 autocmd FileType pandoc set spell
@@ -257,7 +260,7 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 """ Convenience commands
 map <Leader>e :call g:BlackOut()<CR>
 imap <C-e> <Esc>:call g:BlackOut()<CR>
-map <Leader>vb :!bash<CR>
+map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vea :VirtualEnvActivate ENV<CR>
 map <Leader>ved :VirtualEnvDeactivate<CR>
@@ -277,6 +280,14 @@ command -nargs=1 Task read !task <args> uuids
 nnoremap <Leader>n= <C-a>
 nnoremap <Leader>n- <C-x>
 
+""" Directory Shortcuts
+map <Leader>cp :cd ~/devel/prog/
+map <Leader>cg :cd ~/go/src/github.com/derhabicht/
+map <Leader>cw :cd ~/devel/www/
+map <Leader>ch :cd ~/Documents/home/
+map <Leader>ce :cd ~/Documents/work/
+map <Leader>cs :cd ~/Documents/writing/
+
 """ Shells
 map <Leader>hh :HTMLShell<CR>
 map <Leader>hj :JekyllShell<CR>
@@ -289,6 +300,7 @@ map <Leader>xr :%!xxd -r<CR>:<BS>
 
 """ Commands for writing (incl. MakeDoc build)
 map <Leader>mbl :!lualatex %<CR>
+map <Leader>mbp :!pdflatex %<CR>
 map <Leader>mbm :!pandoc -i % -o %:r.html<CR>
 map <Leader>mbg :!dot % -Tsvg > %:r.svg<CR>
 map <Leader>mby :!lilypond %<CR>
@@ -366,20 +378,21 @@ command! JekyllShell call WriteJekyllShell()
 
 "" Insert a shell for a SQLAlchemy ORM model
 function! WriteSQLAlchemy()
+    put _
+    put _
+    normal t
+    normal t
     set noignorecase
-    -1r~/.vim/templates/sqlalchemy
-    %s/${ENTITY}/\=tolower(expand('%:t:r'))/g
-    let @/=tolower(expand('%:t:r'))
-    %s//\u&/
-    %s/${ENTITYPL}/\=tolower(expand('%:t:r'))/g
-    let @/=tolower(expand('%:t:r'))
-    %s//&s/
+    r~/.vim/templates/sqlalchemy
+    let entity = input('Entity name: ')
+    .,.+1s/${Entity}/\=tolower(entity)/g
+    let @/ = tolower(entity)
+    .,.+1s//\u&/
+    .,.+1s/${entity}/\=tolower(entity)/g
     let @/=''
     set smartcase
 endfunction
 command! SQLAlchemyShell call WriteSQLAlchemy()
-
-
 
 " Change the Vim working directory to the user's home directory.
 cd ~

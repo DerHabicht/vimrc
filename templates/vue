@@ -1,15 +1,15 @@
 <template>
-  <div id='${COMPONENT}'>
+  <div id='${component}'>
   </div>
 </template>
 
 <script>
 export default {
-  name: '${COMPONENT}'
-}
+  name: '${COMPONENT}',
+};
 </script>
 
 <style scoped lang="scss">
-#${COMPONENT} {
+#${component} {
 }
 </style>

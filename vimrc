@@ -366,7 +366,8 @@ command! HTMLShell call WriteHTMLShell()
 "" Insert a basic Vue component into the current buffer
 function! WriteVueShell()
     -1r~/.vim/templates/vue
-    %s/${COMPONENT}/\=tolower(expand('%:t:r'))/g
+    %s/${COMPONENT}/\=expand('%:t:r')/g
+    %s/${component}/\=tolower(expand('%:t:r'))/g
 endfunction
 command! VueShell call WriteVueShell()
 

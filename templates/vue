@@ -1,5 +1,5 @@
 <template>
-  <div id='${component}'>
+  <div id="${component}">
   </div>
 </template>
 

@@ -126,7 +126,7 @@ Plugin 'python-mode/python-mode'
 Plugin 'esalter-va/vim-checklist'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'sebdah/vim-delve'
-Plugin 'Shougo/vimshell'
+Plugin 'tpope/vim-classpath'
 
 """ Finalize Vundle
 call vundle#end()

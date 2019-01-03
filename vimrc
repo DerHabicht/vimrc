@@ -27,11 +27,15 @@ set expandtab
 set incsearch
 set smartcase
 
+""" Define novel file types
+autocmd BufNewFile,BufRead *.fizz set filetype=anko
+
 """ Filetype specific overrides of tab settings
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType toml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType lilypond setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -127,6 +131,7 @@ Plugin 'esalter-va/vim-checklist'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'sebdah/vim-delve'
 Plugin 'tpope/vim-classpath'
+Plugin 'cespare/vim-toml'
 
 """ Finalize Vundle
 call vundle#end()

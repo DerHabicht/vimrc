@@ -77,6 +77,7 @@ let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 """ NERDTree
 let NERDTreeMapOpenInTab = '\t'
 let NERDTreeMapOpenInTabSilent = '\T'
+let NERDTreeIgnore = ['\.aux', '\.tdo', '\.toc', '\.hst', '\.ver']
 
 """ Python Mode
 let g:pymode_python = 'python3'

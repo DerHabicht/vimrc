@@ -274,7 +274,8 @@ map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>
 map <Leader>vw :set wrap! wrap?<CR>
-map <Leader>vs :Scratch<CR>
+map <Leader>vso :Scratch<CR><Leader>wo<CR>
+map <Leader>vss :Scratch<CR>
 map <Leader>vt "=strftime("%Y-%m-%d @ %H%M:")<CR>P
 map <Leader>vq :copen<CR>
 map <Leader>v= <C-A>
@@ -400,6 +401,12 @@ function! WriteSQLAlchemy()
     set smartcase
 endfunction
 command! SQLAlchemyShell call WriteSQLAlchemy()
+
+"" Insert a shell for an Org Mode Project file
+function! WriteOrgProject()
+    -1r~/.vim/templates/org_project
+endfunction
+command! OrgProjectShell call WriteOrgProject()
 
 " Change the Vim working directory to the user's home directory.
 cd ~

@@ -264,6 +264,10 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 
 "" Custom commands
 """ Convenience commands
+imap <C-A-S-A> <C-K>:a
+imap <C-A-S-O> <C-K>:o
+imap <C-A-S-U> <C-K>:u
+imap <C-A-S-S> <C-K>ss
 map <Leader>e :call g:BlackOut()<CR>
 imap <C-e> <Esc>:call g:BlackOut()<CR>
 map <Leader>vb :!terminator<CR>

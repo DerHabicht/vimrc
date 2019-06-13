@@ -133,6 +133,7 @@ Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'sebdah/vim-delve'
 Plugin 'tpope/vim-classpath'
 Plugin 'cespare/vim-toml'
+Plugin 'mileszs/ack.vim'
 
 """ Finalize Vundle
 call vundle#end()
@@ -270,6 +271,7 @@ imap <C-A-S-U> <C-K>:u
 imap <C-A-S-S> <C-K>ss
 map <Leader>e :call g:BlackOut()<CR>
 imap <C-e> <Esc>:call g:BlackOut()<CR>
+map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vea :VirtualEnvActivate ENV<CR>

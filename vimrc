@@ -34,6 +34,7 @@ autocmd BufNewFile,BufRead *.fizz set filetype=anko
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType toml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -294,12 +295,16 @@ nnoremap <Leader>n= <C-a>
 nnoremap <Leader>n- <C-x>
 
 """ Directory Shortcuts
+map <Leader>ca :cd ~/devel/assets/
+map <Leader>cc :cd ~/devel/cfg/
+map <Leader>cd :cd ~/devel/dev/
+map <Leader>ce :cd ~/Documents/work/
+map <Leader>ch :cd ~/Documents/home/
 map <Leader>cp :cd ~/devel/prog/
+map <Leader>cq :cd ~/devel/sql/
+map <Leader>cs :cd ~/Documents/writing/
 map <Leader>cg :cd ~/go/src/github.com/derhabicht/
 map <Leader>cw :cd ~/devel/www/
-map <Leader>ch :cd ~/Documents/home/
-map <Leader>ce :cd ~/Documents/work/
-map <Leader>cs :cd ~/Documents/writing/
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>

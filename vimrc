@@ -135,6 +135,7 @@ Plugin 'sebdah/vim-delve'
 Plugin 'tpope/vim-classpath'
 Plugin 'cespare/vim-toml'
 Plugin 'mileszs/ack.vim'
+Plugin 'rust-lang/rust.vim'
 
 """ Finalize Vundle
 call vundle#end()

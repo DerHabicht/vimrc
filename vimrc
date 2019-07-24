@@ -136,6 +136,7 @@ Plugin 'tpope/vim-classpath'
 Plugin 'cespare/vim-toml'
 Plugin 'mileszs/ack.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'OmniSharp/omnisharp-vim'
 
 """ Finalize Vundle
 call vundle#end()
@@ -296,16 +297,18 @@ nnoremap <Leader>n= <C-a>
 nnoremap <Leader>n- <C-x>
 
 """ Directory Shortcuts
-map <Leader>ca :cd ~/devel/assets/
-map <Leader>cc :cd ~/devel/cfg/
-map <Leader>cd :cd ~/devel/dev/
-map <Leader>ce :cd ~/Documents/work/
-map <Leader>ch :cd ~/Documents/home/
-map <Leader>cp :cd ~/devel/prog/
-map <Leader>cq :cd ~/devel/sql/
-map <Leader>cs :cd ~/Documents/writing/
-map <Leader>cg :cd ~/go/src/github.com/derhabicht/
-map <Leader>cw :cd ~/devel/www/
+"""" Development directories
+map <Leader>cda :cd ~/devel/assets/
+map <Leader>cdc :cd ~/devel/cfg/
+map <Leader>cdd :cd ~/devel/dev/
+map <Leader>cdg :cd ~/go/src/github.com/derhabicht/
+map <Leader>cdp :cd ~/devel/prog/
+map <Leader>cds :cd ~/devel/sql/
+map <Leader>cdw :cd ~/devel/www/
+"""" Document directories
+map <Leader>cww :cd ~/Documents/work/
+map <Leader>cwh :cd ~/Documents/home/
+map <Leader>cws :cd ~/Documents/writing/
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>

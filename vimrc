@@ -137,6 +137,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'mileszs/ack.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'HashiVim/vim-terraform'
 
 """ Finalize Vundle
 call vundle#end()

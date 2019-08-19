@@ -286,7 +286,7 @@ map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>
 map <Leader>vw :set wrap! wrap?<CR>
 map <Leader>vso :Scratch<CR><Leader>wo<CR>
 map <Leader>vss :Scratch<CR>
-map <Leader>vt "=strftime("%Y-%m-%d @ %H%M:")<CR>P
+map <Leader>vt "=strftime("%Y-%m-%dT%H:%M")<CR>P
 map <Leader>vq :copen<CR>
 map <Leader>v= <C-A>
 map <Leader>v- <C-X>
@@ -306,6 +306,15 @@ map <Leader>cdg :cd ~/go/src/github.com/derhabicht/
 map <Leader>cdp :cd ~/devel/prog/
 map <Leader>cds :cd ~/devel/sql/
 map <Leader>cdw :cd ~/devel/www/
+"""" Org directories
+map <Leader>coa :cd ~/org/aars/
+map <Leader>cod :cd ~/org/dars/
+map <Leader>cof :cd ~/org/forms/
+map <Leader>coi :cd ~/org/iaps/
+map <Leader>coo :cd ~/org/okrs/
+map <Leader>cop :cd ~/org/policy/
+map <Leader>cot :cd ~/org/todo/
+map <Leader>cow :cd ~/org/wars/
 """" Document directories
 map <Leader>cww :cd ~/Documents/work/
 map <Leader>cwh :cd ~/Documents/home/

@@ -301,14 +301,15 @@ nnoremap <Leader>n- <C-x>
 map <Leader>cda :cd ~/devel/assets/
 map <Leader>cdc :cd ~/devel/cfg/
 map <Leader>cdd :cd ~/devel/dev/
-map <Leader>cdg :cd ~/go/src/github.com/derhabicht/
+map <Leader>cdg :cd ~/go/src/github.com/
 map <Leader>cdp :cd ~/devel/prog/
 map <Leader>cds :cd ~/devel/sql/
 map <Leader>cdw :cd ~/devel/www/
 """" Document directories
-map <Leader>cww :cd ~/Documents/work/
+map <Leader>cwb :cd ~/Documents/blog/
 map <Leader>cwh :cd ~/Documents/home/
 map <Leader>cws :cd ~/Documents/writing/
+map <Leader>cww :cd ~/Documents/work/
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>

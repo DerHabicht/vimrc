@@ -122,7 +122,7 @@ Plugin 'sekel/vim-vue-syntastic'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'DerHabicht/bufexplorer'
 Plugin 'myusuf3/numbers.vim'
@@ -306,7 +306,7 @@ nnoremap <Leader>n- <C-x>
 map <Leader>cda :cd ~/devel/assets/
 map <Leader>cdc :cd ~/devel/cfg/
 map <Leader>cdd :cd ~/devel/dev/
-map <Leader>cdg :cd ~/go/src/github.com/derhabicht/
+map <Leader>cdg :cd ~/go/src/github.com/
 map <Leader>cdp :cd ~/devel/prog/
 map <Leader>cds :cd ~/devel/sql/
 map <Leader>cdw :cd ~/devel/www/
@@ -320,9 +320,10 @@ map <Leader>cop :cd ~/org/policy/
 map <Leader>cot :cd ~/org/todo/
 map <Leader>cow :cd ~/org/wars/
 """" Document directories
-map <Leader>cww :cd ~/Documents/work/
+map <Leader>cwb :cd ~/Documents/blog/
 map <Leader>cwh :cd ~/Documents/home/
 map <Leader>cws :cd ~/Documents/writing/
+map <Leader>cww :cd ~/Documents/work/
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>

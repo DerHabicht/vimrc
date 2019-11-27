@@ -74,11 +74,14 @@ autocmd BufNewFile,BufRead *.md set filetype=pandoc
 """ Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
 
-
 """ NERDTree
 let NERDTreeMapOpenInTab = '\t'
 let NERDTreeMapOpenInTabSilent = '\T'
 let NERDTreeIgnore = ['\.aux', '\.tdo', '\.toc', '\.hst', '\.ver']
+
+""" OmniSharp
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_path = '/home/the-hawk/lib/omnisharp/run'
 
 """ Python Mode
 let g:pymode_python = 'python3'
@@ -228,7 +231,7 @@ map <Leader>gs :Gpush<CR>:<BS>
 map <Leader>gt :Gstatus<CR>:<BS>
 
 """ Vim Checklist
-nnoremap <Leader>ll :ChecklistToggleCheckbox<CR>
+nnoremap ,, :ChecklistToggleCheckbox<CR>
 nnoremap <Leader>le :ChecklistEnableCheckbox<CR>
 nnoremap <Leader>ld :ChecklistDisableCheckbox<CR>
 nnoremap <Leader>ln o- [ ]<Esc><CR>
@@ -278,6 +281,7 @@ imap <C-e> <Esc>:call g:BlackOut()<CR>
 map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
+map <Leader>vd <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
 map <Leader>vea :VirtualEnvActivate ENV<CR>
 map <Leader>ved :VirtualEnvDeactivate<CR>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
@@ -288,8 +292,8 @@ map <Leader>vso :Scratch<CR><Leader>wo<CR>
 map <Leader>vss :Scratch<CR>
 map <Leader>vt "=strftime("%Y-%m-%dT%H:%M")<CR>P
 map <Leader>vq :copen<CR>
-map <Leader>v= <C-A>
-map <Leader>v- <C-X>
+noremap <Leader>v= <C-A>
+noremap <Leader>v- <C-X>
 map <C-O> o<Esc>
 map <C-A> O<Esc>
 command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>

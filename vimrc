@@ -9,7 +9,6 @@ set ffs=unix,dos
 set ruler
 set formatoptions=t
 set textwidth=79
-autocmd BufWritePre let temp=@/ | * :%s/\s\+$//e | let @/=temp
 
 """ Folding
 set backspace=indent,start
@@ -68,8 +67,8 @@ let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordc
 
 """ Vim Pandoc
 let g:pandoc#formatting#mode = "h"
-autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
 autocmd BufNewFile,BufRead *.md set filetype=pandoc
+autocmd BufNewFile,BufRead *.txt set filetype=pandoc
 
 """ Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
@@ -141,6 +140,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'HashiVim/vim-terraform'
+Plugin 'editorconfig/editorconfig-vim'
 
 """ Finalize Vundle
 call vundle#end()
@@ -281,13 +281,16 @@ imap <C-e> <Esc>:call g:BlackOut()<CR>
 map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
-map <Leader>vd <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
+map <Leader>vde <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
+map <Leader>vdt <C-O><C-O>i##<SPACE>
 map <Leader>vea :VirtualEnvActivate ENV<CR>
 map <Leader>ved :VirtualEnvDeactivate<CR>
+map <Leader>vg c// ROBERT HAWK //<ESC>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>
-map <Leader>vw :set wrap! wrap?<CR>
+map <Leader>vn :set wrap! wrap?<CR>
+map <Leader>vw :TrimTrailing<CR>
 map <Leader>vso :Scratch<CR><Leader>wo<CR>
 map <Leader>vss :Scratch<CR>
 map <Leader>vt "=strftime("%Y-%m-%dT%H:%M")<CR>P
@@ -305,8 +308,8 @@ nnoremap <Leader>n- <C-x>
 """" Development directories
 map <Leader>cda :cd ~/devel/assets/
 map <Leader>cdc :cd ~/devel/cfg/
-map <Leader>cdd :cd ~/devel/dev/
-map <Leader>cdg :cd ~/go/src/github.com/
+map <Leader>cdh :cd ~/devel/dev/
+map <Leader>cdd :cd ~/devel/docker/
 map <Leader>cdp :cd ~/devel/prog/
 map <Leader>cds :cd ~/devel/sql/
 map <Leader>cdw :cd ~/devel/www/
@@ -346,10 +349,6 @@ map <Leader>mt  :!./build<CR>
 map <Leader>mw  :!./build web<CR>
 map <Leader>md  :!./build doc<CR>
 map <Leader>mc  :!./build clean<CR>
-map <Leader>msh :!firefox %:r.html<CR>
-map <Leader>msp :!evince %:r.pdf &<CR>:<BS>
-map <Leader>msd :!libreoffice %:r.docx &<CR>:<BS>
-map <Leader>msg :!eog %:r.svg &<CR>:<BS>
 map <Leader>mp  :call g:SprintMode()<CR>:<BS>
 map <Leader>mn  :! update_nano<CR>
 map <Leader>mmm :make<CR>
@@ -437,6 +436,17 @@ function! WriteOrgProject()
     -1r~/.vim/templates/org_project
 endfunction
 command! OrgProjectShell call WriteOrgProject()
+
+"" Trim trailing whitespace from file
+"" Taken from this SO answer: https://tinyurl.com/vunsdls
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfunction
+command! TrimTrailing call TrimWhitespace()
+"" Uncomment to automatically trim whitespace on save
+" autocmd BufWritePre * :call TrimWhitespace()
 
 " Change the Vim working directory to the user's home directory.
 cd ~

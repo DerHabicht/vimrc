@@ -39,10 +39,9 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType toml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType lilypond setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """ Filetype specific overrides of column width
-autocmd FileType lilypond setlocal textwidth=119 colorcolumn=120
+autocmd FileType lilypond setlocal textwidth=139 colorcolumn=140
 autocmd FileType tex setlocal textwidth=119 colorcolumn=120
 
 """ Enable spelling by filetype
@@ -70,6 +69,9 @@ let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordc
 let g:pandoc#formatting#mode = "h"
 autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
 autocmd BufNewFile,BufRead *.md set filetype=pandoc
+
+""" Lilypond
+autocmd BufNewFile,BufRead *.ly set filetype=lilypond
 
 """ Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}

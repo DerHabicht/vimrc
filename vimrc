@@ -143,6 +143,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'HashiVim/vim-terraform'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jamessan/vim-gnupg'
 
 """ Finalize Vundle
 call vundle#end()
@@ -278,15 +279,15 @@ imap <C-A-S-A> <C-K>:a
 imap <C-A-S-O> <C-K>:o
 imap <C-A-S-U> <C-K>:u
 imap <C-A-S-S> <C-K>ss
-map <Leader>e :call g:BlackOut()<CR>
 imap <C-e> <Esc>:call g:BlackOut()<CR>
+map <Leader>ec :let @+=''<CR>
+map <Leader>es :let @+=@E \| w<CR>
 map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vde <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
 map <Leader>vdt <C-O><C-O>i##<SPACE>
-map <Leader>vea :VirtualEnvActivate ENV<CR>
-map <Leader>ved :VirtualEnvDeactivate<CR>
+map <Leader>ve :call g:BlackOut()<CR>
 map <Leader>vg c// ROBERT HAWK //<ESC>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>

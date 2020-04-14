@@ -9,7 +9,6 @@ set ffs=unix,dos
 set ruler
 set formatoptions=t
 set textwidth=79
-autocmd BufWritePre let temp=@/ | * :%s/\s\+$//e | let @/=temp
 
 """ Folding
 set backspace=indent,start
@@ -34,14 +33,14 @@ autocmd BufNewFile,BufRead *.fizz set filetype=anko
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType toml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType lilypond setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """ Filetype specific overrides of column width
-autocmd FileType lilypond setlocal textwidth=119 colorcolumn=120
+autocmd FileType lilypond setlocal textwidth=139 colorcolumn=140
 autocmd FileType tex setlocal textwidth=119 colorcolumn=120
 
 """ Enable spelling by filetype
@@ -67,17 +66,23 @@ let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordc
 
 """ Vim Pandoc
 let g:pandoc#formatting#mode = "h"
-autocmd BufNewFile,BufRead *.m4 set filetype=pandoc
 autocmd BufNewFile,BufRead *.md set filetype=pandoc
+autocmd BufNewFile,BufRead *.txt set filetype=pandoc
+
+""" Lilypond
+autocmd BufNewFile,BufRead *.ly set filetype=lilypond
 
 """ Grammarous
 let g:grammarous#disabled_rules = {'*': ['EN_QUOTES'],}
-
 
 """ NERDTree
 let NERDTreeMapOpenInTab = '\t'
 let NERDTreeMapOpenInTabSilent = '\T'
 let NERDTreeIgnore = ['\.aux', '\.tdo', '\.toc', '\.hst', '\.ver']
+
+""" OmniSharp
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_path = '/home/the-hawk/lib/omnisharp/run'
 
 """ Python Mode
 let g:pymode_python = 'python3'
@@ -118,7 +123,7 @@ Plugin 'sekel/vim-vue-syntastic'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'DerHabicht/bufexplorer'
 Plugin 'myusuf3/numbers.vim'
@@ -133,6 +138,12 @@ Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'sebdah/vim-delve'
 Plugin 'tpope/vim-classpath'
 Plugin 'cespare/vim-toml'
+Plugin 'mileszs/ack.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'HashiVim/vim-terraform'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jamessan/vim-gnupg'
 
 """ Finalize Vundle
 call vundle#end()
@@ -223,7 +234,7 @@ map <Leader>gs :Gpush<CR>:<BS>
 map <Leader>gt :Gstatus<CR>:<BS>
 
 """ Vim Checklist
-nnoremap <Leader>ll :ChecklistToggleCheckbox<CR>
+nnoremap ,, :ChecklistToggleCheckbox<CR>
 nnoremap <Leader>le :ChecklistEnableCheckbox<CR>
 nnoremap <Leader>ld :ChecklistDisableCheckbox<CR>
 nnoremap <Leader>ln o- [ ]<Esc><CR>
@@ -264,21 +275,31 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 
 "" Custom commands
 """ Convenience commands
-map <Leader>e :call g:BlackOut()<CR>
+imap <C-A-S-A> <C-K>:a
+imap <C-A-S-O> <C-K>:o
+imap <C-A-S-U> <C-K>:u
+imap <C-A-S-S> <C-K>ss
 imap <C-e> <Esc>:call g:BlackOut()<CR>
+map <Leader>ec :let @+=''<CR>
+map <Leader>es :let @+=@E \| w<CR>
+map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
-map <Leader>vea :VirtualEnvActivate ENV<CR>
-map <Leader>ved :VirtualEnvDeactivate<CR>
+map <Leader>vde <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
+map <Leader>vdt <C-O><C-O>i##<SPACE>
+map <Leader>ve :call g:BlackOut()<CR>
+map <Leader>vg c// ROBERT HAWK //<ESC>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>
-map <Leader>vw :set wrap! wrap?<CR>
-map <Leader>vs :Scratch<CR>
-map <Leader>vt "=strftime("%Y-%m-%d @ %H%M:")<CR>P
+map <Leader>vn :set wrap! wrap?<CR>
+map <Leader>vw :TrimTrailing<CR>
+map <Leader>vso :Scratch<CR><Leader>wo<CR>
+map <Leader>vss :Scratch<CR>
+map <Leader>vt "=strftime("%Y-%m-%dT%H:%M")<CR>P
 map <Leader>vq :copen<CR>
-map <Leader>v= <C-A>
-map <Leader>v- <C-X>
+noremap <Leader>v= <C-A>
+noremap <Leader>v- <C-X>
 map <C-O> o<Esc>
 map <C-A> O<Esc>
 command -nargs=1 -complete=file Re edit +setlocal\ nomodifiable <args>
@@ -287,12 +308,28 @@ nnoremap <Leader>n= <C-a>
 nnoremap <Leader>n- <C-x>
 
 """ Directory Shortcuts
-map <Leader>cp :cd ~/devel/prog/
-map <Leader>cg :cd ~/go/src/github.com/derhabicht/
-map <Leader>cw :cd ~/devel/www/
-map <Leader>ch :cd ~/Documents/home/
-map <Leader>ce :cd ~/Documents/work/
-map <Leader>cs :cd ~/Documents/writing/
+"""" Development directories
+map <Leader>cda :cd ~/devel/assets/
+map <Leader>cdc :cd ~/devel/cfg/
+map <Leader>cdh :cd ~/devel/dev/
+map <Leader>cdd :cd ~/devel/docker/
+map <Leader>cdp :cd ~/devel/prog/
+map <Leader>cds :cd ~/devel/sql/
+map <Leader>cdw :cd ~/devel/www/
+"""" Org directories
+map <Leader>coa :cd ~/org/aars/
+map <Leader>cod :cd ~/org/dars/
+map <Leader>cof :cd ~/org/forms/
+map <Leader>coi :cd ~/org/iaps/
+map <Leader>coo :cd ~/org/okrs/
+map <Leader>cop :cd ~/org/policy/
+map <Leader>cot :cd ~/org/todo/
+map <Leader>cow :cd ~/org/wars/
+"""" Document directories
+map <Leader>cwb :cd ~/Documents/blog/
+map <Leader>cwh :cd ~/Documents/home/
+map <Leader>cws :cd ~/Documents/writing/
+map <Leader>cww :cd ~/Documents/work/
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>
@@ -315,10 +352,6 @@ map <Leader>mt  :!./build<CR>
 map <Leader>mw  :!./build web<CR>
 map <Leader>md  :!./build doc<CR>
 map <Leader>mc  :!./build clean<CR>
-map <Leader>msh :!firefox %:r.html<CR>
-map <Leader>msp :!evince %:r.pdf &<CR>:<BS>
-map <Leader>msd :!libreoffice %:r.docx &<CR>:<BS>
-map <Leader>msg :!eog %:r.svg &<CR>:<BS>
 map <Leader>mp  :call g:SprintMode()<CR>:<BS>
 map <Leader>mn  :! update_nano<CR>
 map <Leader>mmm :make<CR>
@@ -400,6 +433,23 @@ function! WriteSQLAlchemy()
     set smartcase
 endfunction
 command! SQLAlchemyShell call WriteSQLAlchemy()
+
+"" Insert a shell for an Org Mode Project file
+function! WriteOrgProject()
+    -1r~/.vim/templates/org_project
+endfunction
+command! OrgProjectShell call WriteOrgProject()
+
+"" Trim trailing whitespace from file
+"" Taken from this SO answer: https://tinyurl.com/vunsdls
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfunction
+command! TrimTrailing call TrimWhitespace()
+"" Uncomment to automatically trim whitespace on save
+" autocmd BufWritePre * :call TrimWhitespace()
 
 " Change the Vim working directory to the user's home directory.
 cd ~

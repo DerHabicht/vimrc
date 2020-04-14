@@ -1,3 +1,4 @@
+pip3 install --user pynvim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 ln -s $HOME/.vim/vimrc $HOME/.ideavimrc
 ln -s $HOME/.vim/gvimrc $HOME/.gvimrc

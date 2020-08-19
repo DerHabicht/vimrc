@@ -312,7 +312,7 @@ nnoremap <Leader>n- <C-x>
 """ Directory Shortcuts
 """" Development directories
 map <Leader>cda :cd ~/Documents/Code/Assets/
-map <Leader>cdc :cd ~/Documents/Code/Cfg/
+map <Leader>cdc :cd ~/Documents/Code/Config/
 map <Leader>cdh :cd ~/Documents/Code/Hardware/
 map <Leader>cdp :cd ~/Documents/Code/Programs/
 map <Leader>cds :cd ~/Documents/Code/SQL/

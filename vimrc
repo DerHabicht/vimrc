@@ -49,8 +49,9 @@ autocmd FileType tex set spell
 autocmd FileType plaintex set spell
 autocmd FileType text set spell
 
-""" Override tex filetype
+""" Override tex filetypes
 autocmd BufNewFile,BufRead *.cls set filetype=tex
+autocmd BufNewFile,BufRead *.template set filetype=tex
 
 """ Miscellaneous
 set autoread
@@ -99,6 +100,7 @@ let g:task_report_name = 'today'
 
 """ Vim Go
 let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
 
 "" Load Plugins
 """ Vundle Setup
@@ -123,7 +125,7 @@ Plugin 'sekel/vim-vue-syntastic'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'renyard/vim-git-flow-format'
-"Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'DerHabicht/bufexplorer'
 Plugin 'myusuf3/numbers.vim'
@@ -309,27 +311,26 @@ nnoremap <Leader>n- <C-x>
 
 """ Directory Shortcuts
 """" Development directories
-map <Leader>cda :cd ~/devel/assets/
-map <Leader>cdc :cd ~/devel/cfg/
-map <Leader>cdh :cd ~/devel/dev/
-map <Leader>cdd :cd ~/devel/docker/
-map <Leader>cdp :cd ~/devel/prog/
-map <Leader>cds :cd ~/devel/sql/
-map <Leader>cdw :cd ~/devel/www/
+map <Leader>cda :cd ~/Documents/Code/Assets/
+map <Leader>cdc :cd ~/Documents/Code/Cfg/
+map <Leader>cdh :cd ~/Documents/Code/Hardware/
+map <Leader>cdp :cd ~/Documents/Code/Programs/
+map <Leader>cds :cd ~/Documents/Code/SQL/
+map <Leader>cdw :cd ~/Documents/Code/Web/
 """" Org directories
-map <Leader>coa :cd ~/org/aars/
-map <Leader>cod :cd ~/org/dars/
-map <Leader>cof :cd ~/org/forms/
-map <Leader>coi :cd ~/org/iaps/
-map <Leader>coo :cd ~/org/okrs/
-map <Leader>cop :cd ~/org/policy/
-map <Leader>cot :cd ~/org/todo/
-map <Leader>cow :cd ~/org/wars/
+map <Leader>coa :cd ~/Documents/Org/aars/
+map <Leader>cod :cd ~/Documents/Org/dars/
+map <Leader>cof :cd ~/Documents/Org/forms/
+map <Leader>coi :cd ~/Documents/Org/iaps/
+map <Leader>coo :cd ~/Documents/Org/okrs/
+map <Leader>cop :cd ~/Documents/Org/policy/
+map <Leader>cot :cd ~/Documents/Org/todo/
+map <Leader>cow :cd ~/Documents/Org/wars/
 """" Document directories
-map <Leader>cwb :cd ~/Documents/blog/
-map <Leader>cwh :cd ~/Documents/home/
-map <Leader>cws :cd ~/Documents/writing/
-map <Leader>cww :cd ~/Documents/work/
+map <Leader>cwd :cd ~/Documents/THUS_Docs
+map <Leader>cwh :cd ~/Documents/
+map <Leader>cwm :cd ~/Documents/Memos/
+map <Leader>cws :cd ~/Documents/Writing/
 
 """ Shells
 map <Leader>hh :HTMLShell<CR>
@@ -344,6 +345,7 @@ map <Leader>xr :%!xxd -r<CR>:<BS>
 """ Commands for writing (incl. MakeDoc build)
 map <Leader>mbl :!lualatex %<CR>
 map <Leader>mbp :!pdflatex %<CR>
+map <Leader>mbs :!seagull build --to-pdf
 map <Leader>mbm :!pandoc -i % -o %:r.html<CR>
 map <Leader>mbg :!dot % -Tsvg > %:r.svg<CR>
 map <Leader>mby :!lilypond %<CR>

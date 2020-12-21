@@ -102,6 +102,9 @@ let g:task_report_name = 'today'
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 
+""" Vim Esperanto
+let g:EoMap = "caret"
+
 "" Load Plugins
 """ Vundle Setup
 filetype off
@@ -142,10 +145,10 @@ Plugin 'tpope/vim-classpath'
 Plugin 'cespare/vim-toml'
 Plugin 'mileszs/ack.vim'
 Plugin 'rust-lang/rust.vim'
-Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'HashiVim/vim-terraform'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'greyblake/vim-esperanto'
 
 """ Finalize Vundle
 call vundle#end()
@@ -223,6 +226,9 @@ map <Leader>w, <C-w><
 """ NERDTree
 map <Leader>d :NERDTreeToggle<CR>:<BS>
 
+""" Vim Esperanto
+map <Leeader>eo :Eo
+
 """ undotree
 map <Leader>u :UndotreeToggle<CR>:<BS>
 
@@ -282,15 +288,13 @@ imap <C-A-S-O> <C-K>:o
 imap <C-A-S-U> <C-K>:u
 imap <C-A-S-S> <C-K>ss
 imap <C-e> <Esc>:call g:BlackOut()<CR>
-map <Leader>ec :let @+=''<CR>
-map <Leader>es :let @+=@E \| w<CR>
 map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vde <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
 map <Leader>vdt <C-O><C-O>i##<SPACE>
 map <Leader>ve :call g:BlackOut()<CR>
-map <Leader>vg c// ROBERT HAWK //<ESC>
+map <Leader>vg a// ROBERT HAWK //<ESC>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>

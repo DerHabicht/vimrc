@@ -148,7 +148,9 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'HashiVim/vim-terraform'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'jamessan/vim-gnupg'
-Plugin 'greyblake/vim-esperanto'
+Plugin 'vim-scripts/RPN'
+Plugin 'chrisbra/unicode.vim'
+Plugin 'dpelle/vim-LanguageTool'
 
 """ Finalize Vundle
 call vundle#end()
@@ -156,6 +158,9 @@ filetype plugin indent on
 
 "" Plugin post-load settings
 let mapleader = " "
+
+""" RPN
+command! -nargs=+ Rpn echo Rpn#Eval( <f-args> )
 
 """ Vim Table Mode
 let g:table_mode_corner='|'
@@ -227,7 +232,7 @@ map <Leader>w, <C-w><
 map <Leader>d :NERDTreeToggle<CR>:<BS>
 
 """ Vim Esperanto
-map <Leeader>eo :Eo
+map <Leader>eo :Eo
 
 """ undotree
 map <Leader>u :UndotreeToggle<CR>:<BS>
@@ -243,12 +248,13 @@ map <Leader>gt :Gstatus<CR>:<BS>
 
 """ Vim Checklist
 nnoremap ,, :ChecklistToggleCheckbox<CR>
-nnoremap <Leader>le :ChecklistEnableCheckbox<CR>
-nnoremap <Leader>ld :ChecklistDisableCheckbox<CR>
-nnoremap <Leader>ln o- [ ]<Esc><CR>
-vnoremap <Leader>ll :ChecklistToggleCheckbox<CR>
-vnoremap <Leader>le :ChecklistEnableCheckbox<CR>
-vnoremap <Leader>ld :ChecklistDisableCheckbox<CR>
+vnoremap ,, :ChecklistToggleCheckbox<CR>
+nnoremap ,n o- [ ]<Esc><CR>
+
+""" Vim LanguageTool
+map <Leader>lc :LanguageToolCheck<CR>
+map <Leader>ln :lne<CR>
+map <Leader>lr :LanguageToolClear<CR>
 
 """ vim-go
 map <Leader>ob :GoBuild<CR>
@@ -282,6 +288,25 @@ nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
 "" Custom commands
+""" Custom Digraphs
+"""" Esperanto
+digraphs ^C 264
+digraphs ^G 284
+digraphs ^H 292
+digraphs ^J 308
+digraphs ^S 348
+digraphs )U 364
+digraphs ^c 265
+digraphs ^g 285
+digraphs ^h 293
+digraphs ^j 309
+digraphs ^s 349
+digraphs )u 365
+
+"""" Duodecimal
+digraphs d2 8586
+digraphs d3 8587
+
 """ Convenience commands
 imap <C-A-S-A> <C-K>:a
 imap <C-A-S-O> <C-K>:o
@@ -300,6 +325,7 @@ map <Leader>vi :set ignorecase! ignorecase?<CR>
 map <Leader>vl :vimgrep /TODO:/ **/*.*<CR>:copen<CR>
 map <Leader>vn :set wrap! wrap?<CR>
 map <Leader>vw :TrimTrailing<CR>
+map <Leader>vr :Rpn 
 map <Leader>vso :Scratch<CR><Leader>wo<CR>
 map <Leader>vss :Scratch<CR>
 map <Leader>vt "=strftime("%Y-%m-%dT%H:%M")<CR>P

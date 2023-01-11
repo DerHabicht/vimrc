@@ -151,6 +151,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'vim-scripts/RPN'
 Plugin 'chrisbra/unicode.vim'
 Plugin 'dpelle/vim-LanguageTool'
+Plugin 'jceb/vim-orgmode'
 
 """ Finalize Vundle
 call vundle#end()
@@ -312,13 +313,13 @@ imap <C-A-S-A> <C-K>:a
 imap <C-A-S-O> <C-K>:o
 imap <C-A-S-U> <C-K>:u
 imap <C-A-S-S> <C-K>ss
-imap <C-e> <Esc>:call g:BlackOut()<CR>
+"imap <C-e> <Esc>:call g:BlackOut()<CR>
 map <Leader>t :Ack TODO<CR>
 map <Leader>vb :!terminator<CR>
 map <Leader>vc :let @/=""<CR>:<BS>
 map <Leader>vde <C-O><C-O>"=strftime("### %Y-%m-%dT%H:%M")<CR>Po-<SPACE>
 map <Leader>vdt <C-O><C-O>i##<SPACE>
-map <Leader>ve :call g:BlackOut()<CR>
+"map <Leader>ve :call g:BlackOut()<CR>
 map <Leader>vg a// ROBERT HAWK //<ESC>
 map <Leader>vh :set hlsearch! hlsearch?<CR>
 map <Leader>vi :set ignorecase! ignorecase?<CR>
@@ -377,9 +378,10 @@ map <Leader>mbl :!lualatex %<CR>
 map <Leader>mbp :!pdflatex %<CR>
 map <Leader>mbs :!seagull build --to-pdf
 map <Leader>mbm :!pandoc -i % -o %:r.html<CR>
-map <Leader>mbg :!dot % -Tsvg > %:r.svg<CR>
+map <Leader>mbg :!dot % -Tpng > %:r.png<CR>
 map <Leader>mby :!lilypond %<CR>
 map <Leader>mbd :!pandoc -i % -o %:r.docx<CR>
+map <Leader>mbu :!plantuml %<CR>
 map <Leader>mt  :!./build<CR>
 map <Leader>mw  :!./build web<CR>
 map <Leader>md  :!./build doc<CR>
